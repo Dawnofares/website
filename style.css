@@ -1,0 +1,29 @@
+footer {
+    position:fixed; 
+    bottom:0; 
+    width:100%;
+    background-color: #e9f1f7;
+    text-align: center;
+    margin-top: auto;
+}
+#information {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 75vh;
+}
+#info {
+    padding-top: 20vh;
+    color: white;
+    text-align: center;
+}
+#howto {
+    text-align: left;
+    background-color: #e7dfc6;
+}
+#content {
+    margin-bottom: 100px;
+}
+#bugreport {
+    background-color: #816c61;
+}
