@@ -8,7 +8,6 @@ function dexsearch() {
     let list = "";
     axios.get(`https://pokeapi.co/api/v2/pokemon/${userInput}`).then(response => {
       let pokemon = response.data;
-      document.getElementById("pokemon-list").innerHTML += pokemon;
         list += insertdata(pokemon.name);
       document.getElementById("pokemon-list").innerHTML = list;
     })
@@ -16,7 +15,7 @@ function dexsearch() {
 }
 function insertdata(pokemon) {
   console.log(pokemon);
-  let data = `<button type="button" class="list-group-item list-group-item-action active" aria-current="true" id=${pokemon} onclick = "getdata(this.id)"> ${pokemon}
+  let data = `<button type="button" class="list-group-item list-group-item-action active" aria-current="true" id=${pokemon}"> ${pokemon}
   </button>
 `;
   return data;
@@ -49,31 +48,38 @@ function dexsearch2(target) {
   
 }
 function searchstat() {
-  let userInput = document.getElementById('dexsearch-input').value;
-  let stat = document.getElementById("statchoice");
-  stat.onchange = function() {
-    let statchoice = stat.options[stat.selectedIndex].value;
-    console.log(stat);
+    let userInput = document.getElementById('dexsearch-input').value;
+    userInput = userInput.replace(/ +(?= )/g,'');
+    userInput = userInput.replace(" ", "-")
+    userInput = userInput.trim();
+    userInput = userInput.toLowerCase();
+    document.getElementById("pokemon-list").style.display = "block";
+    let list = "";
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${userInput}`).then(response => {
+      let pokemon = response.data;
+      let pokestats = [];
+      for (let x = 0; x<6; x++) {
+        pokestats[x] = pokemon.stats[x].base_stat;
+        console.log(pokestats[x]);
+      }
+      list += getstats(pokemon.name, pokestats);
+      
+      
+      document.getElementById("pokemon-list").innerHTML = list;
+      
+      
+    })
+}
+function getstats(pokemon, stats) {
+  let data = `<button type="button" class="list-group-item list-group-item-action active" aria-current="true" id=${pokemon}"> ${pokemon} 
+  </button>`;
+  let statline=['hp', 'attack', 'defense', 'special attack', 'special defense', 'speed'];
+  for (let x = 0; x<6; x++) {
+    data += `</br> <button type="button" class="list-group-item list-group-item-action active" aria-current="true" id=${pokemon}">${statline[x]} ${stats[x]} 
+    </button>`;
   }
-  userInput = userInput.replace(/ +(?= )/g,'');
-  userInput = userInput.replace(" ", "-")
-  userInput = userInput.trim();
-  userInput = userInput.toLowerCase();
-  document.getElementById("pokemon-list").style.display = "block";
-  let list = "";
   
-  axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=2000`).then(response => {
-    let pokemonlist = response.data.results;
-    for (let x = 0; x<pokemonlist.length; x++) {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonlist[x].name}`).then(response => {
-        let pokemon= response.data;
-      })
-    }
-
-    
-    document.getElementById("pokemon-list").innerHTML = list;
-  })
-  
+  return data;
 }
 function listall(target) {
   document.getElementById("pokemon-list").style.display = "block";

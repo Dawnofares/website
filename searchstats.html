@@ -52,22 +52,9 @@
             </div>
           </nav>
           <section id="information"> 
-            <h2 id = "info">Search the Pokemon by stat.</h2>
+            <h2 id = "info">Search the Pokemon's stats.</h2>
             <div class="input-group" id="dexsearch-form">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        stat
-                    </button>
-                    <ul class="dropdown-menu" id="statchoice">
-                        <li><a class="dropdown-item" value="0">hp</a></li>
-                        <li><a class="dropdown-item" value="1">attack</a></li>
-                        <li><a class="dropdown-item" value="2">defense</a></li>
-                        <li><a class="dropdown-item" value="3">special attack</a></li>
-                        <li><a class="dropdown-item" value="4">special defense</a></li>
-                        <li><a class="dropdown-item" value="5">speed</a></li>
-                    </ul>
-                </div>
-                <input type="text" id="dexsearch-input" name="input-word" class="form-control" placeholder="Enter a parameter">
+                <input type="text" id="dexsearch-input" name="input-word" class="form-control" placeholder="Enter a Pokemon">
                 <button class="btn btn-success" type="button" id="dexsearch" onclick="searchstat()">Search</button>
                   
               </div>
@@ -81,6 +68,10 @@
           <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
           
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+          <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
           <script src="searcher.js" defer></script>
         </body>
         <footer>
